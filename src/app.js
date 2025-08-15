@@ -1,8 +1,15 @@
 import Fastify from 'fastify';
+import { UserRouter } from './routes/users.route.js';
+import { StudentRouter } from './routes/student.route.js';
+import { UniversityRouter } from './routes/univercity.route.js';
 
 const fastify = Fastify({
     logger: true
 });
+
+fastify.register(UserRouter.router, { prefix: '/users' });
+fastify.register(StudentRouter.router, { prefix: '/student' });
+fastify.register(UniversityRouter.router, { prefix: '/univercity' });
 
 export class Application {
     static async start() {
